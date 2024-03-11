@@ -2,6 +2,7 @@
 // A main menu consisting of two options. Generate a new set of messages, and exit.
 
 import { createInterface } from "readline";
+import data from "./messages.json" assert { type: "json" };
 
 // Create readline interface
 const rl = createInterface({
@@ -40,13 +41,19 @@ async function mainMenu() {
 }
 
 function generateMessages() {
-  // Random quote
-  // Random fact
-  // Random joke
+  // generate random number from zero to length of quote/joke/fact
+  function getRandomIndex(arrayLength) {
+    return Math.floor(Math.random() * arrayLength);
+  }
+
+  // console log for each
+  const RANDOMQUOTE=data.quotes[getRandomIndex(data.quotes.length)]
+  const RANDOMJOKE=data.jokes[getRandomIndex(data.jokes.length)]
+  const RANDOMFACT=data.facts[getRandomIndex(data.facts.length)]
+  console.log(`- ${RANDOMQUOTE}`);
+  console.log(`- ${RANDOMJOKE}`);
+  console.log(`- ${RANDOMFACT}`);
 }
 
-// display main menu
+// display main menu, entry point of script
 mainMenu();
-
-// Validate user input
-// Produce message

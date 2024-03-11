@@ -13,22 +13,30 @@ console.log(
   "\nWelcome to the daily dose of wit! This program generates the following three texts at random: ",
 );
 
-function mainMenu(message) {
-  // If there is a message argument, display it.
+const question = (query) =>
+  new Promise((resolve) => rl.question(query, resolve));
 
-  console.log(`
-1) A quote from a philosopher
-2) A interesting fact
-3) A joke
-\nChoose an option:
-1) Generate a new set of messages
-2) Exit`,
-  );
+async function mainMenu() {
+  let choice;
+  do {
+    console.log(
+      `\nChoose an option:\n1) Generate a new set of messages\n2) Exit`,
+    );
+    choice = await question("\nEnter your choice: ");
 
-  // Ask for user input
-  rl.question("\nEnter your choice: ", (choice) => {
-    console.log(choice);
-  });
+    switch (choice) {
+      case "1":
+        console.log("\nGenerating messages...");
+        generateMessages();
+        break;
+      case "2":
+        console.log("\nExiting. Goodbye!");
+        break;
+      default:
+        console.log("\nPlease choose a valid input (1 or 2)!");
+    }
+  } while (choice !== "2");
+  rl.close();
 }
 
 function generateMessages() {

@@ -1,0 +1,15 @@
+{
+  "name": "find-your-hat",
+  "version": "1.0.0",
+  "description": "A simple CLI game where the player inputs keystrokes to move around a field and find their hat.",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Mumtahin Farabi",
+  "license": "ISC",
+  "dependencies": {
+    "prompt-sync": "^4.2.0"
+  }
+}
